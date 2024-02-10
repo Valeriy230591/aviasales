@@ -1,0 +1,22 @@
+.card__wrapper {
+  max-width: 502px;
+  height: 184px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  background: rgb(255, 255, 255);
+}
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__header_price {
+  color: rgb(33, 150, 243);
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+}
