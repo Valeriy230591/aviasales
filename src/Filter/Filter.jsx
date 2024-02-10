@@ -39,16 +39,17 @@ const Filter = () => {
           };
         })
       );
+    } else {
+      setFilters(
+        filters.map((el) => {
+          if (el.id !== checkId) return el;
+          return {
+            ...el,
+            completed: !el.completed,
+          };
+        })
+      );
     }
-    setFilters(
-      filters.map((el) => {
-        if (el.id !== checkId) return el;
-        return {
-          ...el,
-          completed: !el.completed,
-        };
-      })
-    );
   };
   return (
     <div className={style.filter}>
