@@ -30,6 +30,16 @@ const Filter = () => {
     },
   ]);
   const handleChange = (checkId) => {
+    if (checkId === 1) {
+      setFilters(
+        filters.map((el) => {
+          return {
+            ...el,
+            completed: !el.completed,
+          };
+        })
+      );
+    }
     setFilters(
       filters.map((el) => {
         if (el.id !== checkId) return el;
