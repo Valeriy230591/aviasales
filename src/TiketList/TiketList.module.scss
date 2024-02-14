@@ -27,15 +27,12 @@
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.tikets__button:active {
+.tikets__button.active {
   color: rgb(255, 255, 255);
   background: rgb(33, 150, 243);
   border-color: rgb(33, 150, 243);
 }
 
-.tikets__item {
-  margin-bottom: 20px;
-}
 .tiket__showMore {
   display: flex;
   align-items: center;

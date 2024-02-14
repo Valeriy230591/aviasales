@@ -1,30 +1,47 @@
 import React from "react";
 import style from "./TiketList.module.scss";
 import Card from "../Card/Card";
+import { useEffect, useState, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSearchId, fetchTickets } from "../store/actionServer";
+import { activeTab } from "../store/tabsSlice";
 const TiketList = () => {
+  // const { id, tickets, isLoading, errorMessage } = useSelector(
+  //   (state) => state.tickets
+  // );
+  const tabs = useSelector((state) => state.tabs.tabs);
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchSearchId());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (id) {
+  //     dispatch(fetchTickets(id));
+  //   }
+  // }, [dispatch, id]);
   return (
     <div className={style.tikets__wrapper}>
       <div className={style.tikets__buttons}>
-        <button className={style.tikets__button}>Самый дешевый</button>
-        <button className={style.tikets__button}>Самый быстрый</button>
-        <button className={style.tikets__button}>Оптимальный</button>
+        {tabs.map((tab) => {
+          return (
+            <button
+              id={tab.name}
+              active={tab.active.toString()}
+              onClick={() => dispatch(activeTab(tab.name))}
+              className={
+                tab.active
+                  ? `${style.tikets__button} ${style.active}`
+                  : style.tikets__button
+              }
+            >
+              {tab.label}
+            </button>
+          );
+        })}
       </div>
       <ul className={style.tikets__list}>
-        <li className={style.tikets__item}>
-          <Card />
-        </li>
-        <li className={style.tikets__item}>
-          <Card />
-        </li>
-        <li className={style.tikets__item}>
-          <Card />
-        </li>
-        <li className={style.tikets__item}>
-          <Card />
-        </li>
-        <li className={style.tikets__item}>
-          <Card />
-        </li>
+        <Card />
       </ul>
       <div className={style.tiket__showMore}>
         <button className={style.tiket__showMore_button}>
