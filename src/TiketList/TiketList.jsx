@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./TiketList.module.scss";
 import Card from "../Card/Card";
+<<<<<<< HEAD
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchId, fetchTickets } from "../store/actionServer";
@@ -39,6 +40,32 @@ const TiketList = () => {
             </button>
           );
         })}
+=======
+import { handleChangeTabs } from "../store/tabsSlice";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+const TiketList = () => {
+  const tabs = useSelector((state) => state.tabs.tabs);
+  const dispatch = useDispatch();
+  const handleActiveTabs = (id) => {
+    dispatch(handleChangeTabs(id));
+  };
+
+  return (
+    <div className={style.tikets__wrapper}>
+      <div className={style.tikets__buttons}>
+        {tabs.map((item) => (
+          <button
+            onClick={() => handleActiveTabs(item.id)}
+            id={item.id}
+            className={`${style.tikets__button} ${
+              item.active ? style.tikets__button_active : ""
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
+>>>>>>> 7dc6139fa486c08ece341ada3484755e98a7bcb8
       </div>
       <ul className={style.tikets__list}>
         <Card />

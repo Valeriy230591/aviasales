@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {configureStore,} from '@reduxjs/toolkit'
 import  ticketsReducer from './tiketSlice'
 import tabsReducer from './tabsSlice'
@@ -11,3 +12,14 @@ const store = configureStore({
     
 })
 export default store;
+=======
+import { configureStore } from "@reduxjs/toolkit"
+import filterReducer from './filterSlice'
+import tabsReducer from './tabsSlice'
+export default configureStore({
+    reducer:{
+        filters:filterReducer,
+        tabs:tabsReducer
+    }
+})
+>>>>>>> 7dc6139fa486c08ece341ada3484755e98a7bcb8
