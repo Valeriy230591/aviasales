@@ -1,14 +1,11 @@
 import React from "react";
 import style from "./TiketList.module.scss";
+import Tabs from "../Tabs/Tabs";
 import Card from "../Card/Card";
 const TiketList = () => {
   return (
     <div className={style.tikets__wrapper}>
-      <div className={style.tikets__buttons}>
-        <button className={style.tikets__button}>Самый дешевый</button>
-        <button className={style.tikets__button}>Самый быстрый</button>
-        <button className={style.tikets__button}>Оптимальный</button>
-      </div>
+      <Tabs />
       <ul className={style.tikets__list}>
         <li className={style.tikets__item}>
           <Card />

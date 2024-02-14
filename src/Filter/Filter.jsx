@@ -1,62 +1,28 @@
 import React from "react";
 import style from "./Filter.module.scss";
-import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveFilter } from "../store/filterSlice";
 const Filter = () => {
-  const [filters, setFilters] = useState([
-    {
-      id: 1,
-      name: "Все",
-      completed: false,
-    },
-    {
-      id: 2,
-      name: "Без пересадок",
-      completed: false,
-    },
-    {
-      id: 3,
-      name: "1 пересадка",
-      completed: false,
-    },
-    {
-      id: 4,
-      name: "2 пересадки",
-      completed: false,
-    },
-    {
-      id: 5,
-      name: "3 пересадки",
-      completed: false,
-    },
-  ]);
-  const handleChange = (checkId) => {
-    setFilters(
-      filters.map((el) => {
-        if (el.id !== checkId) return el;
-        return {
-          ...el,
-          completed: !el.completed,
-        };
-      })
-    );
-  };
+  const filterArr = useSelector((state) => state.filters.filters);
+  const dispatch = useDispatch();
   return (
     <div className={style.filter}>
       <div>
         <h1 className={style.filter__header}>Количество пересадок</h1>
       </div>
       <div className={style.filter__menu}>
-        {filters.map((item) => {
+        {filterArr.map((item) => {
           return (
             <div className={style.filter__checkbox} key={item.id}>
               <input
                 id={item.id}
-                onClick={() => handleChange(item.id)}
+                onChange={() => dispatch(setActiveFilter(item.name))}
                 className={style.custom__checkbox}
                 type="checkbox"
-                checked={filters.completed}
+                checked={item.completed}
               ></input>
-              <label htmlFor={item.id}>{item.name}</label>
+              <label htmlFor={item.id}>{item.label}</label>
             </div>
           );
         })}
